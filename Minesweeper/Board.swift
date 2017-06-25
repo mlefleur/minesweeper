@@ -26,5 +26,42 @@ class Board  {
                 self.squares[x].append(0)
             }
         }
+        
+        // insert bombs using json
+        self.insertBombs(jsonBombs: bombs)
+    }
+    
+    // insert bombs into self.squares
+    func insertBombs(jsonBombs: String) {
+        guard let bombs = parseJSON(jsonBombs) else {
+            return
+        }
+        
+        for (_, bombPosition) in bombs.enumerated() {
+            let x = bombPosition[0]
+            let y = bombPosition[1]
+            self.squares[x][y] = 1
+        }
+    }
+    
+    // parse json string as given in example
+    // return as 2d array if Ints (coordinates)
+    func parseJSON(_ jsonString: String) -> [[Int]]? {
+        if let data = jsonString.data(using: .utf8) {
+            var returnArray: [[Int]] = []
+            
+            do {
+                let json = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments) as! [Any]
+                for i in 0..<json.count {
+                    let j = json[i] as! [Int]
+                    returnArray.append(j)
+                }
+            } catch {
+                print(error.localizedDescription)
+            }
+            
+            return returnArray
+        }
+        return nil
     }
 }
