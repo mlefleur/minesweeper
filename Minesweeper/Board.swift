@@ -78,4 +78,25 @@ class Board  {
             return false
         }
     }
+    
+    // get number of bombs around (x,y)
+    // can include (x,y) as we know it doesn't have bomb
+    func getSurroundingBombCount(x: Int, y: Int) -> Int {
+        
+        var counter = 0
+        
+        for posX in x-1...x+1 {
+            if posX < 0 || posX >= self.squares.count { continue } // if out of X axis bounds, skip
+            
+            for posY in y-1...y+1 {
+                if posY < 0 || posY >= self.squares[y].count { continue } // if out of Y axis bounds, skip
+                
+                if self.squares[posX][posY] == .bomb {
+                    counter += 1
+                }
+            }
+        }
+        
+        return counter
+    }
 }

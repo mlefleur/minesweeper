@@ -13,7 +13,7 @@ class MinesweeperTests: XCTestCase {
     
     var board: Board!
     let size = 7
-    let bombJSON = "[[0,0],[0,4],[1,1],[1,4],[1,5],[2,0],[2,2],[2,5],[3,1],[3,4],[3,5],[4,4],[4,5],[5,0],[5,3],[5,6],[6,0],[6,2],[6,5]]"
+    let bombJSON = "[[0,0],[0,4],[1,1],[1,4],[1,5],[2,0],[2,2],[2,5],[3,1],[3,4],[3,5],[4,4],[4,5],[5,0],[5,3],[6,0],[6,2]]"
     
     /*
      +---+---+---+---+---+---+---+
@@ -27,9 +27,9 @@ class MinesweeperTests: XCTestCase {
      +---+---+---+---+---+---+---+
      | X | X |   | X | X |   |   |
      +---+---+---+---+---+---+---+
-     |   | X | X | X | X |   | X |
+     |   | X | X | X | X |   |   |
      +---+---+---+---+---+---+---+
-     |   |   |   |   |   | X |   |
+     |   |   |   |   |   |   |   |
      +---+---+---+---+---+---+---+
      */
     
@@ -84,6 +84,10 @@ class MinesweeperTests: XCTestCase {
         XCTAssert(self.board.squares[1][0] == .empty)
         
         XCTAssertTrue(self.board.isBombAt(x: 0, y: 0))
+        
+        XCTAssert(self.board.getSurroundingBombCount(x: 2, y: 4) == 5)
+        
+        XCTAssert(self.board.getSurroundingBombCount(x: 6, y: 6) == 0)  // also checks that can test over range of grid
     }
     
 }
