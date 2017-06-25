@@ -78,10 +78,10 @@ class MinesweeperTests: XCTestCase {
     func testBombs() {
         // JSON string should insert bombs into correct positions
         // based on above json - 0,0 should have bomb
-        XCTAssert(self.board.squares[0][0] == 1)
+        XCTAssert(self.board.squares[0][0] == .bomb)
         
         // base on above json - 1,0 should have no bomb
-        XCTAssert(self.board.squares[1][0] == 0)
+        XCTAssert(self.board.squares[1][0] == .empty)
     }
     
 }

@@ -8,14 +8,19 @@
 
 import Foundation
 
+enum BoardSquare {
+    case empty
+    case bomb
+}
+
 class Board  {
-    var squares: [[Int]] = [] // 2d array to represent bombs
+    var squares: [[BoardSquare]] = [] // 2d array to represent bombs
     
     init(size: Int, bombs: String) {
         // initialise array with 0s (no bomb)
         
         // Rows
-        let row: [Int] = []
+        let row: [BoardSquare] = []
         for _ in 0..<size {
             self.squares.append(row)
         }
@@ -23,7 +28,7 @@ class Board  {
         // Columns
         for x in 0..<size {
             for _ in 0..<size {
-                self.squares[x].append(0)
+                self.squares[x].append(.empty)
             }
         }
         
@@ -40,7 +45,7 @@ class Board  {
         for (_, bombPosition) in bombs.enumerated() {
             let x = bombPosition[0]
             let y = bombPosition[1]
-            self.squares[x][y] = 1
+            self.squares[x][y] = .bomb
         }
     }
     
