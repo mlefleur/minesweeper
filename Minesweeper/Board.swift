@@ -14,30 +14,43 @@ enum BoardSquare {
 }
 
 class Board  {
+    
+    // MARK: - Variables
     var squares: [[BoardSquare]] = [] // 2d array to represent bombs
     
+    
+    // MARK: - Initialisers
+    
     init(size: Int, bombs: String) {
-        // initialise array with 0s (no bomb)
+        // initialise array with .empty (no bomb)
         
-        // Rows
-        let row: [BoardSquare] = []
-        for _ in 0..<size {
-            self.squares.append(row)
-        }
-        
-        // Columns
-        for x in 0..<size {
-            for _ in 0..<size {
-                self.squares[x].append(.empty)
-            }
-        }
+        self.squares = Array(repeating: Array(repeating: BoardSquare.empty, count: size), count: size)
         
         // insert bombs using json
         self.insertBombs(jsonBombs: bombs)
     }
     
+    
+    // MARK: - Public Functions
+    
+    // select square at position
+    // if square is bomb, return nil
+    // otherwise, return number of bombs around (above, below, left, right and diagonals)
+    func selectSquare(x: Int, y: Int) -> Int? {
+        switch self.isBombAt(x: x, y: y) {
+        case true:
+            return nil
+        case false:
+            let numberOfBombs = self.getSurroundingBombCount(x: x, y: y)
+            return numberOfBombs
+        }
+    }
+    
+    
+    // MARK: - Private Functions
+    
     // insert bombs into self.squares
-    func insertBombs(jsonBombs: String) {
+    private func insertBombs(jsonBombs: String) {
         guard let bombs = parseJSON(jsonBombs) else {
             return
         }
@@ -51,7 +64,7 @@ class Board  {
     
     // parse json string as given in example
     // return as 2d array if Ints (coordinates)
-    func parseJSON(_ jsonString: String) -> [[Int]]? {
+    private func parseJSON(_ jsonString: String) -> [[Int]]? {
         if let data = jsonString.data(using: .utf8) {
             var returnArray: [[Int]] = []
             
@@ -71,7 +84,7 @@ class Board  {
     }
     
     // test for bomb at x,y
-    func isBombAt(x: Int, y: Int) -> Bool {
+    private func isBombAt(x: Int, y: Int) -> Bool {
         if self.squares[x][y] == .bomb {
             return true
         } else {
@@ -81,7 +94,7 @@ class Board  {
     
     // get number of bombs around (x,y)
     // can include (x,y) as we know it doesn't have bomb
-    func getSurroundingBombCount(x: Int, y: Int) -> Int {
+    private func getSurroundingBombCount(x: Int, y: Int) -> Int {
         
         var counter = 0
         
@@ -100,16 +113,5 @@ class Board  {
         return counter
     }
     
-    // select square at position
-    // if square is bomb, return nil
-    // otherwise, return number of bombs around (above, below, left, right and diagonals)
-    func selectSquare(x: Int, y: Int) -> Int? {
-        switch self.isBombAt(x: x, y: y) {
-        case true:
-            return nil
-        case false:
-            let numberOfBombs = self.getSurroundingBombCount(x: x, y: y)
-            return numberOfBombs
-        }
-    }
+    
 }

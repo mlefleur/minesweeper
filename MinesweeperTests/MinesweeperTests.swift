@@ -87,12 +87,12 @@ class MinesweeperTests: XCTestCase {
         XCTAssert(self.board.squares[1][0] == .empty)
         
         // single function to test bomb by position
-        XCTAssertTrue(self.board.isBombAt(x: 0, y: 0))
+        // PRIVATE   XCTAssertTrue(self.board.isBombAt(x: 0, y: 0))
         
         // get surrounding bombs of square
-        XCTAssert(self.board.getSurroundingBombCount(x: 2, y: 4) == 5)
+        // PRIVATE   XCTAssert(self.board.getSurroundingBombCount(x: 2, y: 4) == 5)
         
-        XCTAssert(self.board.getSurroundingBombCount(x: 6, y: 6) == 0)  // also checks that can test over range of grid
+        // PRIVATE   XCTAssert(self.board.getSurroundingBombCount(x: 6, y: 6) == 0)  // also checks that can test over range of grid
         
         // select square - to indicate the user has hit a bomb, return nil
         XCTAssertNil(self.board.selectSquare(x: 3, y: 4))
