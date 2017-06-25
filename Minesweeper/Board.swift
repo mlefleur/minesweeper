@@ -99,4 +99,17 @@ class Board  {
         
         return counter
     }
+    
+    // select square at position
+    // if square is bomb, return nil
+    // otherwise, return number of bombs around (above, below, left, right and diagonals)
+    func selectSquare(x: Int, y: Int) -> Int? {
+        switch self.isBombAt(x: x, y: y) {
+        case true:
+            return nil
+        case false:
+            let numberOfBombs = self.getSurroundingBombCount(x: x, y: y)
+            return numberOfBombs
+        }
+    }
 }

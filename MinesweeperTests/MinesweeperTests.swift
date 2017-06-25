@@ -75,6 +75,9 @@ class MinesweeperTests: XCTestCase {
         XCTAssert(counter == self.size * self.size) // eg size = 7, therefore counter = 49
     }
     
+    // Assumptions given:
+    // square selected is in board dimensions
+    // position is given (starting from 0 to max-1)
     func testBombs() {
         // JSON string should insert bombs into correct positions
         // based on above json - 0,0 should have bomb
@@ -83,11 +86,20 @@ class MinesweeperTests: XCTestCase {
         // base on above json - 1,0 should have no bomb
         XCTAssert(self.board.squares[1][0] == .empty)
         
+        // single function to test bomb by position
         XCTAssertTrue(self.board.isBombAt(x: 0, y: 0))
         
+        // get surrounding bombs of square
         XCTAssert(self.board.getSurroundingBombCount(x: 2, y: 4) == 5)
         
         XCTAssert(self.board.getSurroundingBombCount(x: 6, y: 6) == 0)  // also checks that can test over range of grid
+        
+        // select square - to indicate the user has hit a bomb, return nil
+        XCTAssertNil(self.board.selectSquare(x: 3, y: 4))
+        
+        // otherwise, return number of surrounding bombs
+        XCTAssert(self.board.selectSquare(x: 2, y: 1)! == 4)
+        
     }
     
 }
