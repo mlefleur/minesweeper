@@ -13,6 +13,7 @@
 		AA221B121EFFFE0F007BDB11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA221B111EFFFE0F007BDB11 /* Assets.xcassets */; };
 		AA221B151EFFFE0F007BDB11 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA221B131EFFFE0F007BDB11 /* LaunchScreen.storyboard */; };
 		AA221B201EFFFE0F007BDB11 /* MinesweeperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA221B1F1EFFFE0F007BDB11 /* MinesweeperTests.swift */; };
+		AA221B2C1EFFFEB6007BDB11 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA221B2B1EFFFEB6007BDB11 /* Board.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		AA221B1B1EFFFE0F007BDB11 /* MinesweeperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MinesweeperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA221B1F1EFFFE0F007BDB11 /* MinesweeperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinesweeperTests.swift; sourceTree = "<group>"; };
 		AA221B211EFFFE0F007BDB11 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA221B2B1EFFFEB6007BDB11 /* Board.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,12 +79,8 @@
 		AA221B091EFFFE0F007BDB11 /* Minesweeper */ = {
 			isa = PBXGroup;
 			children = (
-				AA221B0A1EFFFE0F007BDB11 /* AppDelegate.swift */,
-				AA221B0C1EFFFE0F007BDB11 /* ViewController.swift */,
-				AA221B0E1EFFFE0F007BDB11 /* Main.storyboard */,
-				AA221B111EFFFE0F007BDB11 /* Assets.xcassets */,
-				AA221B131EFFFE0F007BDB11 /* LaunchScreen.storyboard */,
-				AA221B161EFFFE0F007BDB11 /* Info.plist */,
+				AA221B2A1EFFFEA5007BDB11 /* Other */,
+				AA221B2B1EFFFEB6007BDB11 /* Board.swift */,
 			);
 			path = Minesweeper;
 			sourceTree = "<group>";
@@ -94,6 +92,19 @@
 				AA221B211EFFFE0F007BDB11 /* Info.plist */,
 			);
 			path = MinesweeperTests;
+			sourceTree = "<group>";
+		};
+		AA221B2A1EFFFEA5007BDB11 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				AA221B0A1EFFFE0F007BDB11 /* AppDelegate.swift */,
+				AA221B0C1EFFFE0F007BDB11 /* ViewController.swift */,
+				AA221B0E1EFFFE0F007BDB11 /* Main.storyboard */,
+				AA221B111EFFFE0F007BDB11 /* Assets.xcassets */,
+				AA221B131EFFFE0F007BDB11 /* LaunchScreen.storyboard */,
+				AA221B161EFFFE0F007BDB11 /* Info.plist */,
+			);
+			name = Other;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -203,6 +214,7 @@
 			files = (
 				AA221B0D1EFFFE0F007BDB11 /* ViewController.swift in Sources */,
 				AA221B0B1EFFFE0F007BDB11 /* AppDelegate.swift in Sources */,
+				AA221B2C1EFFFEB6007BDB11 /* Board.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

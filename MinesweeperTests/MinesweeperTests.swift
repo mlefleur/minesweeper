@@ -11,26 +11,48 @@ import XCTest
 
 class MinesweeperTests: XCTestCase {
     
+    var board: Board!
+    let size = 7
+    
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        
+        self.board = Board(size: self.size, bombs: "")
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
+        self.board = nil
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    // Assumptions given:
+    // size is non negative
+    // board is square
+    func testBoardInit() {
+        // Board should be created correctly
+        XCTAssertNotNil(board)
+        
+        // Width should equal size given for init
+        let width = self.board.squares.count
+        XCTAssert(width == self.size)
+        
+        // Height should equal size given for init
+        let height = self.board.squares[0].count
+        XCTAssert(height == self.size)
+        
+        // Width should equal height
+        XCTAssert(width == height)
+        
+        // Total squares
+        var counter = 0
+        for x in 0..<self.board.squares.count {
+            for _ in 0..<self.board.squares[x].count {
+                counter += 1
+            }
         }
+        
+        XCTAssert(counter == self.size * self.size) // eg size = 7, therefore counter = 49
     }
     
 }
