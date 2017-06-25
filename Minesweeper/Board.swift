@@ -69,4 +69,13 @@ class Board  {
         }
         return nil
     }
+    
+    // test for bomb at x,y
+    func isBombAt(x: Int, y: Int) -> Bool {
+        if self.squares[x][y] == .bomb {
+            return true
+        } else {
+            return false
+        }
+    }
 }

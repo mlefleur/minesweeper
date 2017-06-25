@@ -82,6 +82,8 @@ class MinesweeperTests: XCTestCase {
         
         // base on above json - 1,0 should have no bomb
         XCTAssert(self.board.squares[1][0] == .empty)
+        
+        XCTAssertTrue(self.board.isBombAt(x: 0, y: 0))
     }
     
 }
